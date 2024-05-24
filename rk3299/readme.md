@@ -22,7 +22,7 @@ Mainline kernel is fully supported and will receive most support in the future. 
 
  
 
-What works:
+# What works:
 
 Should boot and work flawlessy on all boards with RK3228a, RK3228b and RK3229, with either DDR2 and DDR3 memories.
 Mainline u-boot
@@ -41,7 +41,7 @@ Full GPU acceleration
 U-boot boot order priority: first the sdcard, then the USB OTG port and eventually the internal eMMC; you can install u-boot (and the whole system) in the internal eMMC and u-boot will always check for images on external sdcard/USB first.
  
 
-Unbrick:
+# Unbrick:
 
 Technically, rockchip devices cannot be bricked. If the internal flash does not contain a bootable system, they will always boot from the sdcard. If, for a reason, the bootable system on the internal flash is corrupted or is unable to boot correctly, you can always force the maskrom mode shorting the eMMC clock pin on the PCB. Here there is the procedure, but you can also google around if you get stuck on a faulty bootloader, the technique is pretty simple and requires a simple screwdriver.
 
@@ -59,7 +59,7 @@ H20 - eMCP
 ZQ01 - eMCP
  
 
-NAND vs eMMC vs eMCP difference:
+# NAND vs eMMC vs eMCP difference:
 
 RK3228 and RK3229 tv boxes comes with three different flash memory chips: eMMC, NAND and eMCP.
 
@@ -88,7 +88,7 @@ The Multitool (see later) also can detect which chip you have onboard: the progr
 
  
 
-NAND bootloader upgrade:
+# NAND bootloader upgrade:
 
 IMPORTANT: don't do this is you have an eMMC or eMCP; skip this paragraph if you are unsure too!
 
@@ -106,14 +106,14 @@ The detailed instructions and the binaries are available at this post
 
  
 
-Multimedia:
+# Multimedia:
 
 Mainline kernel: 3D acceleration is provided by Lima driver and is already enabled. Hardware video decoding: https://forum.armbian.com/topic/19258-testing-hardware-video-decoding-rockchip-allwinner/
 Deprecated legacy kernel: multimedia features, like OpenGL/OpenGL ES acceleration, hardware accelerated Kodi, ffmpeg and mpv you can take a look to this post
 An effective tutorial from @Hai Nguyen on how to configure a box as a hi-quality music player using an USB audio card, and controlling it via remote control is available in this post
  
 
-Brief explanation about kernel naming:
+# Brief explanation about kernel naming:
 
 current kernel is the mainline LTS kernel version, most maintained and tested. This is the suggested version for production devices. If you don't know what to pick, pick this.
 legacy kernel (version 4.4) is provided by manufacturer; it is deprecated, unmaintained and not suggested.
@@ -124,7 +124,7 @@ You can switch from one kernel flavour to another using armbian-config or manual
 
  
 
-Installation (via SD card):
+## Installation (via SD card):
 
 Building:
 
