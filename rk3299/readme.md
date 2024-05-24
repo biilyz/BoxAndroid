@@ -1,5 +1,5 @@
 # BoxAndroid
-DISCLAIMERS (PLEASE READ):
+# DISCLAIMERS (PLEASE READ):
 
 Everything you can find in this thread (binaries, texts, code snippets, etc...) are provided AS-IS and are not part of official Armbian project. For this reason not people from Armbian project nor myself are responsible for misuse or loss of functionality of hardware.
 THIS POST explains very well the troubles with TV Boxes and why they are not suitable for everyone
