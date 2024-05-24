@@ -1,4 +1,4 @@
-	<strong>DISCLAIMERS (PLEASE READ):</strong>
+# DISCLAIMERS (PLEASE READ)
 </p>
 
 <ul>
