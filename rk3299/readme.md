@@ -106,7 +106,9 @@
 </p>
 
 <p>
-	<span style="color:#ff00ff;"><span style="font-size:20px;"><strong>Unbrick:</strong></span></span><strong> </strong>
+	
+# Unbrick:
+ 
 </p>
 
 <p>
@@ -149,7 +151,9 @@
 </p>
 
 <p>
-	<span style="color:#ff00ff;"><span style="font-size:20px;"><strong><abbr title="A type of flash memory"><abbr title="A type of flash memory">NAND</abbr></abbr> vs <abbr title="embedded MultiMediaCard"><abbr title="embedded MultiMediaCard">eMMC</abbr></abbr> vs eMCP difference:</strong></span></span>
+	
+#	NAND vs eMMC vs eMCP difference:
+ 
 </p>
 
 <p>
@@ -213,7 +217,9 @@
 </p>
 
 <p>
-	<span style="color:#ff00ff;"><span style="font-size:20px;"><strong><abbr title="A type of flash memory"><abbr title="A type of flash memory">NAND</abbr></abbr> bootloader upgrade:</strong></span></span><strong> </strong>
+	
+#	NAND bootloader upgrade:
+ 
 </p>
 
 <p>
@@ -249,7 +255,9 @@
 </p>
 
 <p>
-	<span style="color:#ff00ff;"><span style="font-size:20px;"><strong>Multimedia:</strong></span></span>
+	
+#	Multimedia:
+ 
 </p>
 
 <ul>
@@ -269,7 +277,9 @@
 </p>
 
 <p>
-	<span style="font-size:18px;"><strong><span style="color:#ff00ff;">Brief explanation about kernel naming:</span></strong></span>
+	
+#	Brief explanation about kernel naming:
+ 
 </p>
 
 <ul>
@@ -297,7 +307,9 @@
 </p>
 
 <p>
-	<span style="color:#ff00ff;"><span style="font-size:20px;"><strong>Installation (via SD card):</strong></span></span>
+	
+# Installation (via SD card):
+
 </p>
 
 <p>
@@ -561,7 +573,9 @@
 </p>
 
 <p>
-	<strong><span style="font-size:20px;"><span style="color:#ff00ff;">Installation (without SD card, board with <abbr title="embedded MultiMediaCard"><abbr title="embedded MultiMediaCard">eMMC</abbr>)</abbr></span></span></strong>
+	
+#	Installation (without SD card, board with eMMC)
+	
 </p>
 
 <p>
@@ -616,7 +630,9 @@
 </p>
 
 <p>
-	<strong><span style="font-size:20px;"><span style="color:#ff00ff;">Installation (without SD card, board with <abbr title="A type of flash memory"><abbr title="A type of flash memory">NAND</abbr></abbr>)</span></span></strong>
+	
+#	Installation (without SD card, board with NAND)
+	
 </p>
 
 <p>
@@ -789,7 +805,9 @@ Write LBA from file (100%)</pre>
 </p>
 
 <p>
-	<span style="font-size:24px;"><strong><span style="color:#ff00ff;">Partecipation and debugging:</span></strong></span>
+	
+#	Partecipation and debugging:
+ 
 </p>
 
 <p>
