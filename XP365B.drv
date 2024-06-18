@@ -1,0 +1,395 @@
+Skip to content
+ 
+Search…
+All gists
+Back to GitHub
+@oxycoder
+oxycoder/XP365B.drv
+Last active 2 months ago • Report abuse
+Code
+Revisions
+4
+Stars
+5
+Forks
+1
+Clone this repository at &lt;script src=&quot;https://gist.github.com/oxycoder/2bebab7961a27ce8b664ffa0d73bc9b9.js&quot;&gt;&lt;/script&gt;
+<script src="https://gist.github.com/oxycoder/2bebab7961a27ce8b664ffa0d73bc9b9.js"></script>
+Drivers for XPrinter 365B on Mac / Linux
+build.MD
+Step 1: Install printer filters: https://github.com/kids0407/xprinter-driver-macos/blob/master/Xprinter_printer_label_MAC_driver.zip
+
+Step 2: Install Apple CUPS
+
+brew install cups
+Step 3: Build driver ppdc -d /Library/Printers/TSC/PPDs XP365B.drv
+
+Step 4: Add printer with complied ppd files at /Library/Printers/TSC/PPDs/xp365b.ppd
+
+XP365B.drv
+// Include standard font and media definitions
+#include <font.defs>
+#include <media.defs>
+
+Copyright "Oxycoder"
+Copyright "License: MIT"
+
+// Reference document: https://www.cups.org/doc/ref-ppdcfile.html#CustomMedia
+// Introduction: https://www.cups.org/doc/ppd-compiler.html
+// PostScript Dev: https://www.cups.org/doc/postscript-driver.html
+
+// Specify this is a PostScript printer driver
+DriverType ps
+
+// List the fonts that are supported, in this case all standard fonts
+Font *
+
+// Manufacturer, model name, and version
+Manufacturer "XPrinter"
+ModelName "Xprinter XP-365B"
+Version 1.0
+Throughput 1
+
+// PostScript printer attributes
+Attribute DefaultColorSpace "" Gray
+Attribute LandscapeOrientation "" Plus90
+Attribute LanguageLevel "" "3"
+Attribute Product "" "(Xprinter XP-365B)"
+Attribute "PSVersion" "" "(3010.000) 550"
+Attribute "PSVersion" "" "(3010.000) 651"
+Attribute "PSVersion" "" "(3010.000) 652"
+Attribute "PSVersion" "" "(3010.000) 653"
+Attribute "PSVersion" "" "(3010.000) 704"
+Attribute "PSVersion" "" "(3010.000) 705"
+Attribute "PSVersion" "" "(3010.000) 800"
+Attribute TTRasterizer "" Type42
+Attribute "RequiresPageRegion" "All" "True"
+Attribute "TscAttrib" "UnitMode" "mm"
+Attribute "FileSystem" "" "False"
+
+// Specify the name of the PPD file we want to generate
+PCFileName "xp365b.ppd"
+Filter application/vnd.cups-raster 0 /Library/Printers/TSC/Filter/rastertobarcodetspl
+
+Group "Quality/Quality"
+  Option "Resolution/Resolution" PickOne AnySetup 300.0
+      *Choice "203dpi/203 dpi x 203 dpi" "<</HWResolution[203 203]/cupsBitsPerColor 1/cupsRowCount 8/cupsRowFeed 0/cupsRowStep 0/cupsColorSpace 3>>setpagedevice"
+  Option "ColorOption/ColorOption" PickOne AnySetup 310.0
+    *Choice "None/None" "<</HWResolution[203 203]/cupsBitsPerColor 8/cupsColorSpace 3>>setpagedevice"
+    Choice "GrayScale/GrayScale" "<</HWResolution[203 203]/cupsBitsPerColor 1/cupsRowCount 8/cupsRowFeed 0/cupsRowStep 0/cupsColorSpace 3>>setpagedevice"
+    Choice "Halftone/Halftone" "<</HWResolution[203 203]/cupsBitsPerColor 8/cupsColorSpace 3>>setpagedevice"
+
+Group "General/General"
+  Option "Collate/Collate" Boolean AnySetup 200.0
+    *Choice "True/Yes" "%%"
+    Choice "False/No" "%%"
+
+Group "PageSet/Page Options"
+  Option "PrintSpeed/Print Speed" PickOne AnySetup 110.0
+    Choice "20/2.00 in/sec" "%%"
+    Choice "30/3.00 in/sec" "%%"
+    Choice "40/4.00 in/sec" "%%"
+    *Choice "50/5.00 in/sec" "%%"
+  Option "Darkness/Darkness" PickOne AnySetup 120.0
+    Choice "0/0" "%%"
+    Choice "1/1" "%%"
+    Choice "2/2" "%%"
+    Choice "3/3" "%%"
+    Choice "4/4" "%%"
+    Choice "5/5" "%%"
+    Choice "6/6" "%%"
+    *Choice "7/7" "%%"
+    Choice "8/8" "%%"
+    Choice "9/9" "%%"
+    Choice "10/10" "%%"
+    Choice "11/11" "%%"
+    Choice "12/12" "%%"
+    Choice "13/13" "%%"
+    Choice "14/14" "%%"
+    Choice "15/15" "%%"
+  Option "AdjustHoriaontal/Horizontal Offset" PickOne AnySetup 130.0
+    *Choice "0/0mm" "%%"
+    Choice "2.83/1mm" "%%"
+    Choice "5.67/2mm" "%%"
+    Choice "8.50/3mm" "%%"
+    Choice "11.34/4mm" "%%"
+    Choice "14.17/5mm" "%%"
+    Choice "17.01/6mm" "%%"
+    Choice "19.84/7mm" "%%"
+    Choice "22.68/8mm" "%%"
+    Choice "25.51/9mm" "%%"
+    Choice "28.35/10mm" "%%"
+    Choice "31.18/11mm" "%%"
+    Choice "34.02/12mm" "%%"
+    Choice "36.85/13mm" "%%"
+    Choice "39.69/14mm" "%%"
+    Choice "42.52/15mm" "%%"
+  Option "AdjustVertical/Vertical Offset" PickOne AnySetup 130.0
+    *Choice "0/0mm" "%%"
+    Choice "2.83/1mm" "%%"
+    Choice "5.67/2mm" "%%"
+    Choice "8.50/3mm" "%%"
+    Choice "11.34/4mm" "%%"
+    Choice "14.17/5mm" "%%"
+    Choice "17.01/6mm" "%%"
+    Choice "19.84/7mm" "%%"
+    Choice "22.68/8mm" "%%"
+    Choice "25.51/9mm" "%%"
+    Choice "28.35/10mm" "%%"
+    Choice "31.18/11mm" "%%"
+    Choice "34.02/12mm" "%%"
+    Choice "36.85/13mm" "%%"
+    Choice "39.69/14mm" "%%"
+    Choice "42.52/15mm" "%%"
+Group "Media/Media Setting"
+  Option "MediaMethod/Method" PickOne AnySetup 110.0
+    *Choice "Normal/Use Currently Printer Setting" "%%"
+    Choice "Direct/Direct Thermal" "%%"
+    Choice "Transfer/Thermal Transfer" "%%"
+  Option "PaperType/Type" PickOne AnySetup 120.0
+    *Choice "LabelGaps/Label with Gaps" "%%"
+    Choice "LabelMark/Label with Mark" "%%"
+    Choice "Continue/Continue" "%%"
+  Option "MarkHeight/Gaps Height" PickOne AnySetup 150.0
+    Choice "0/0mm" "%%"
+    Choice "2.83/1mm" "%%"
+    Choice "5.67/2mm" "%%"
+    Choice "8.50/3mm" "%%"
+    Choice "11.34/4mm" "%%"
+    Choice "14.17/5mm" "%%"
+    Choice "17.01/6mm" "%%"
+    Choice "19.84/7mm" "%%"
+    Choice "22.68/8mm" "%%"
+    Choice "25.51/9mm" "%%"
+    Choice "28.35/10mm" "%%"
+    Choice "31.18/11mm" "%%"
+    Choice "34.02/12mm" "%%"
+    Choice "36.85/13mm" "%%"
+    Choice "39.69/14mm" "%%"
+    Choice "42.52/15mm" "%%"
+    Choice "45.35/16mm" "%%"
+    Choice "48.19/17mm" "%%"
+    Choice "51.02/18mm" "%%"
+    Choice "53.86/19mm" "%%"
+    Choice "56.69/20mm" "%%"
+  Option "MarkOffset/Gaps Offset" PickOne AnySetup 160.0
+    *Choice "0/0mm" "%%"
+    Choice "2.83/1mm" "%%"
+    Choice "5.67/2mm" "%%"
+    Choice "8.50/3mm" "%%"
+    Choice "11.34/4mm" "%%"
+    Choice "14.17/5mm" "%%"
+    Choice "17.01/6mm" "%%"
+    Choice "19.84/7mm" "%%"
+    Choice "22.68/8mm" "%%"
+    Choice "25.51/9mm" "%%"
+    Choice "28.35/10mm" "%%"
+    Choice "31.18/11mm" "%%"
+    Choice "34.02/12mm" "%%"
+    Choice "36.85/13mm" "%%"
+    Choice "39.69/14mm" "%%"
+    Choice "42.52/15mm" "%%"
+  Option "VerticalOffset/Vertical Offset" PickOne AnySetup 160.0
+    Choice "-72.00/-25.4mm" "%%"
+    Choice "-70.87/-25mm" "%%"
+    Choice "-68.03/-24mm" "%%"
+    Choice "-65.20/-23mm" "%%"
+    Choice "-62.36/-22mm" "%%"
+    Choice "-59.53/-21mm" "%%"
+    Choice "-56.69/-20mm" "%%"
+    Choice "-53.86/-19mm" "%%"
+    Choice "-51.02/-18mm" "%%"
+    Choice "-48.19/-17mm" "%%"
+    Choice "-45.35/-16mm" "%%"
+    Choice "-42.52/-15mm" "%%"
+    Choice "-39.69/-14mm" "%%"
+    Choice "-36.85/-13mm" "%%"
+    Choice "-34.02/-12mm" "%%"
+    Choice "-31.18/-11mm" "%%"
+    Choice "-28.35/-10mm" "%%"
+    Choice "-25.51/-9mm" "%%"
+    Choice "-22.68/-8mm" "%%"
+    Choice "-19.84/-7mm" "%%"
+    Choice "-17.01/-6mm" "%%"
+    Choice "-14.17/-5mm" "%%"
+    Choice "-11.34/-4mm" "%%"
+    Choice "-8.50/-3mm" "%%"
+    Choice "-5.67/-2mm" "%%"
+    Choice "-2.83/-1mm" "%%"
+    *Choice "0/0mm" "%%"
+    Choice "2.83/1mm" "%%"
+    Choice "5.67/2mm" "%%"
+    Choice "8.50/3mm" "%%"
+    Choice "11.34/4mm" "%%"
+    Choice "14.17/5mm" "%%"
+    Choice "17.01/6mm" "%%"
+    Choice "19.84/7mm" "%%"
+    Choice "22.68/8mm" "%%"
+    Choice "25.51/9mm" "%%"
+    Choice "28.35/10mm" "%%"
+    Choice "31.18/11mm" "%%"
+    Choice "34.02/12mm" "%%"
+    Choice "36.85/13mm" "%%"
+    Choice "39.69/14mm" "%%"
+    Choice "42.52/15mm" "%%"
+    Choice "45.35/16mm" "%%"
+    Choice "48.19/17mm" "%%"
+    Choice "51.02/18mm" "%%"
+    Choice "53.86/19mm" "%%"
+    Choice "56.69/20mm" "%%"
+    Choice "59.53/21mm" "%%"
+    Choice "62.36/22mm" "%%"
+    Choice "65.20/23mm" "%%"
+    Choice "68.03/24mm" "%%"
+    Choice "70.87/25mm" "%%"
+    Choice "72.00/25.4mm" "%%"
+
+Group "PostPrint/Post Print"
+  Option "PostAction/Post-Print Action" PickOne AnySetup 130.0
+    Choice "None/None" "%%"
+    *Choice "TearOff/Tear Off" "%%"
+    Choice "PeelOff/Peel Off" "%%"
+    Choice "Cut/Cut" "%%"
+    Choice "PartialCut/Partial Cut" "%%"
+  Option "Occurrence/Occurrence" PickOne AnySetup 140.0
+    *Choice "Every/After Every Page" "%%"
+    Choice "Copies/After Identical Copies" "%%"
+    Choice "Job/After Job" "%%"
+    Choice "Specified/After Specified interval" "%%"
+  Option "Interval/Interval" PickOne AnySetup 150.0
+    *Choice "1/1" "%%"
+    Choice "2/2" "%%"
+    Choice "3/3" "%%"
+    Choice "4/4" "%%"
+    Choice "5/5" "%%"
+    Choice "6/6" "%%"
+    Choice "7/7" "%%"
+    Choice "8/8" "%%"
+    Choice "9/9" "%%"
+    Choice "10/10" "%%"
+  Option "FeedOffset/Feed Offset" PickOne AnySetup 160.0
+    Choice "-72.00/-25.4mm" "%%"
+    Choice "-70.87/-25mm" "%%"
+    Choice "-68.03/-24mm" "%%"
+    Choice "-65.20/-23mm" "%%"
+    Choice "-62.36/-22mm" "%%"
+    Choice "-59.53/-21mm" "%%"
+    Choice "-56.69/-20mm" "%%"
+    Choice "-53.86/-19mm" "%%"
+    Choice "-51.02/-18mm" "%%"
+    Choice "-48.19/-17mm" "%%"
+    Choice "-45.35/-16mm" "%%"
+    Choice "-42.52/-15mm" "%%"
+    Choice "-39.69/-14mm" "%%"
+    Choice "-36.85/-13mm" "%%"
+    Choice "-34.02/-12mm" "%%"
+    Choice "-31.18/-11mm" "%%"
+    Choice "-28.35/-10mm" "%%"
+    Choice "-25.51/-9mm" "%%"
+    Choice "-22.68/-8mm" "%%"
+    Choice "-19.84/-7mm" "%%"
+    Choice "-17.01/-6mm" "%%"
+    Choice "-14.17/-5mm" "%%"
+    Choice "-11.34/-4mm" "%%"
+    Choice "-8.50/-3mm" "%%"
+    Choice "-5.67/-2mm" "%%"
+    Choice "-2.83/-1mm" "%%"
+    *Choice "0/0mm" "%%"
+    Choice "2.83/1mm" "%%"
+    Choice "5.67/2mm" "%%"
+    Choice "8.50/3mm" "%%"
+    Choice "11.34/4mm" "%%"
+    Choice "14.17/5mm" "%%"
+    Choice "17.01/6mm" "%%"
+    Choice "19.84/7mm" "%%"
+    Choice "22.68/8mm" "%%"
+    Choice "25.51/9mm" "%%"
+    Choice "28.35/10mm" "%%"
+    Choice "31.18/11mm" "%%"
+    Choice "34.02/12mm" "%%"
+    Choice "36.85/13mm" "%%"
+    Choice "39.69/14mm" "%%"
+    Choice "42.52/15mm" "%%"
+    Choice "45.35/16mm" "%%"
+    Choice "48.19/17mm" "%%"
+    Choice "51.02/18mm" "%%"
+    Choice "53.86/19mm" "%%"
+    Choice "56.69/20mm" "%%"
+    Choice "59.53/21mm" "%%"
+    Choice "62.36/22mm" "%%"
+    Choice "65.20/23mm" "%%"
+    Choice "68.03/24mm" "%%"
+    Choice "70.87/25mm" "%%"
+    Choice "72.00/25.4mm" "%%"
+Group "Effects/Effects"
+  Option "MirrorImage/Mirror Image" Boolean AnySetup 200.0
+    Choice "True/Yes" "%%"
+    *Choice "False/No" "%%"
+  Option "NegativeImage/Negative Image" Boolean AnySetup 210.0
+    Choice "True/Yes" "%%"
+    *Choice "False/No" "%%"
+Group "GraphicsFormat/Graphics Format"
+  Option "DirectBuffer/Direct to Buffer" PickOne AnySetup 210.0
+    *Choice "AUTO/Automatic" "%%"
+  Option "StoredGraphics/Stored Graphics" PickOne AnySetup 220.0
+    *Choice "AUTO/Automatic" "%%"  
+  
+*CustomMedia "Receipt/Receipt(72mm)" 72mm 2540mm 0 0 0 0
+  "<</PageSize[204 7200]/ImagingBBox null>>setpagedevice" 
+  "<</PageSize[204 7200]/ImagingBBox null>>setpagedevice"
+CustomMedia "Barcode/Barcode(70mm x 22mm)" 70mm 22mm 0 0 0 0
+  "<</PageSize[198 62]/ImagingBBox null>>setpagedevice" 
+  "<</PageSize[198 62]/ImagingBBox null>>setpagedevice"
+
+MaxSize 85mm 2540mm
+VariablePaperSize yes
+@MatthK
+MatthK commented on Feb 4, 2021
+Is there a way to compile the PPD on a Raspberry Pi running Ubuntu 20.04? I have that printer and would like to use it from my Pi, but can't get it to work. How can I compile the driver?
+
+@oxycoder
+Author
+oxycoder commented on Feb 6, 2021
+I end up with official driver: http://www.xprinter.com.ua/download/Xprinter_printer_label_MAC_driver.zip
+
+After download and install, you can extract PPD files (compiled)
+Find TTP-244 (Pro) ppd file and install it, it should work for any unix OS.
+
+@MatthK
+MatthK commented on Feb 10, 2021
+Thank you very much. I have tried to create a CUPS printer using the TTP-244 (Pro) ppd file, but unfortunately that only got me a "stopped" print job whenever I tried to print something.
+
+I guess I have to give up the idea to use my Raspberry Pi for that printer, and work on a Windows box instead.
+
+@gisthere
+gisthere commented on Feb 24, 2021
+@MatthK Have you managed to make 365B work on Linux? I have the same issue with the "stopped" print job.
+
+@MatthK
+MatthK commented on Feb 24, 2021
+No, I haven't. I have kinda given up on the hope to make it work.
+
+@wauzzz
+wauzzz commented on Dec 29, 2022
+I have made work 365B with TDP-245Plus.ppd
+
+@evevseev
+evevseev commented on Aug 4, 2023
+^ TTP-245 driver does work
+
+@biilyz
+Comment
+ 
+Leave a comment
+ 
+Footer
+© 2024 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact
+Manage cookies
+Do not share my personal information
