@@ -1,1 +1,4 @@
-
+#1. Root You Phone
+#2. install termux.apk
+#3. Run " pkg install tsu "
+#4. Run " sudo reboot update "
